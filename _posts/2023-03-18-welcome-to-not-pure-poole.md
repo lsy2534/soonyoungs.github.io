@@ -45,6 +45,20 @@ Fork로 이름을 지을때에는 "username".github.io 이렇게 입력합니다
 ![screenshot.png](/img/20230318/jellkey.png)
 내 레파지토리로 옮겨진 졌다면, 레파지토리 상단에 <b>Setting > Pages > Branch > main or master</b> 를 선택하고 Save버튼을 클릭해 저장해 준다.
 
+![screenshot.png](/img/20230318/rubyversion.png)
+![screenshot.png](/img/20230318/rubyversion2.png)
+여기서 중요한건 Ruby버전이다. 초기에는 최신버전인 3.2, 3.1이 써져있으나, 테마를 빌드하기에는 2.4~ 2.7버전에서 실행이 된다. 이러한 버전을 맞춰주지 않는다면 dependency 늪에 빠져 나오기 힘들었다. 이러한 jekyll.yml 파일이 실제로 build Log를 보며 고치기란 정말 쉽지 않았다. 나는 여기서 Ruby버전을 2.7.7 버젼으로 맞추고 실행하였다.
+
+<p style="color: red;">Troubleshooting</p>
+![screenshot.png](/img/20230318/Troubleshooting.png)
+<p style="color: red;">Time.now.strftime('%Y-%m-%d %H:%M:%S %z') %>': Document 'vendor/cache/gems/jekyll-3.2.1/lib/site_template/_posts/0000-00-00-welcome-to-jekyll.markdown.erb' does not have a valid date in the YAML front matter.
+</p>
+vendor 디렉토리를  _config.yml안에 exclude: 영역에 추가를 해주었다.
+실제 해결방법을 한 이슈 <a href="https://github.com/jekyll/jekyll/issues/5267">https://github.com/jekyll/jekyll/issues/5267</a>  
+
+
+이제 실제로 우리만의 블로그 사이트가 잘 작동하는것을 볼수있을것이다.
+
 ## Ruby Installer
 
 ><a href="https://rubyinstaller.org/downloads/">Ruby Installer</a>
