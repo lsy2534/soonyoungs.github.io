@@ -1,5 +1,5 @@
 # Setup
-title: Sun blog
+title: soonyoung Blog
 description: Troubleshooting Diary
 url: https://lsy2534.github.io/soonyoungs.github.io/
 avatar: /avatar_soon.jpg
@@ -26,18 +26,19 @@ exclude:
   - README.md
   - scripts/
   - not-pure-poole.gemspec
+#add 추가 gem설치시 Time.now.strftime('%Y-%m-%d %H:%M:%S %z') %>': Document 'vendor/cache/gems/jekyll-3.2.1/lib/site_template/_posts/0000-00-00-welcome-to-jekyll.markdown.erb' does not have a valid date in the YAML front matter.
   - vendor
 
 # Optimize Jekyl SEO Tag
 instargram:
   username: Sunyoung
   card: summary
-logo: logo.png
+logo: screenshot.png
 social:
   name: so
   links:
     - https://twitter.com/vszhub
-    - https://github.com/vszhub
+    - https://github.com/lsy2534
 google_site_verification: xxxxx
 lang: en
 
@@ -57,4 +58,3 @@ sass:
 author:
   name: Songzi Vong
   url: https://github.com/vszhub/
-  email: lsy2534@gmail.com
