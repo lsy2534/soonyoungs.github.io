@@ -1,11 +1,11 @@
 # Setup
-title: Not Pure Poole
-description: A simple, beautiful, and powerful Jekyll theme for blogs
-url: https://vszhub.github.io
-avatar: /avatar.jpeg
+title: Sun blog
+description: Troubleshooting Diary
+url: https://lsy2534.github.io/soonyoungs.github.io/
+avatar: /avatar_soon.jpg
 paginate: 5
 permalink: pretty
-cover_image: /bg.jpeg
+cover_image: /bg_soon.jpg
 
 # Gems
 plugins:
@@ -29,12 +29,12 @@ exclude:
   - vendor
 
 # Optimize Jekyl SEO Tag
-twitter:
-  username: vszhub
+instargram:
+  username: Sunyoung
   card: summary
 logo: logo.png
 social:
-  name: Songzi Vong
+  name: so
   links:
     - https://twitter.com/vszhub
     - https://github.com/vszhub
@@ -57,4 +57,4 @@ sass:
 author:
   name: Songzi Vong
   url: https://github.com/vszhub/
-  email: vszhub@gmail.com
+  email: lsy2534@gmail.com
