@@ -43,7 +43,7 @@ Fork로 이름을 지을때에는 "username".github.io 이렇게 입력합니다
 
 
 ![screenshot.png](/img/20230318/jellkey.png)
-내 레파지토리로 옮겨진 졌다면, 레파지토리 상단에 <b>Setting > Pages > Branch > main or master</b> 를 선택하고 Save버튼을 클릭해 저장해 줍니다.
+내 레파지토리로 옮겨진 졌다면, 레파지토리 상단에 <b>Setting > Pages > Branch > main or master</b> 를 선택하고 Save버튼을 클릭해 저장해 준다.
 
 ## Ruby Installer
 
