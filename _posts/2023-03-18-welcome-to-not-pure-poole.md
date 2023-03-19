@@ -42,11 +42,13 @@ jeKyll를 설치하려면 우선 Ruby를 설치해야하지만 가장 좋은 방
 Fork로 이름을 지을때에는 "username".github.io 이렇게 입력합니다.
 
 ![jellkey](https://user-images.githubusercontent.com/57931679/226149349-cadf7680-6397-4dec-93f6-b9d2d46d8d88.png)
-내 레파지토리로 옮겨진 졌다면, 레파지토리 상단에 <b>Setting > Pages > Branch > main or master</b> 를 선택하고 Save버튼을 클릭해 저장해 준다.
+내 레파지토리로 옮겨 졌다면, 레파지토리 상단에 Settinh 텝을 클릭해 page를 지정한다. <b>Setting > Pages > Branch > main or master</b> 를 선택하고 Save버튼을 클릭해 저장해 준다.
 
+# Github에서 테마 빌드 하기
 ![rubyversion](https://user-images.githubusercontent.com/57931679/226149362-7b2aeb55-7b47-47b6-b690-9796c4379388.png)
 ![rubyversion2](https://user-images.githubusercontent.com/57931679/226149375-f57011c1-d7a5-4b93-9d02-2361e5255b88.png)
-여기서 중요한건 Ruby버전이다. 초기에는 최신버전인 3.2, 3.1이 써져있으나, 테마를 빌드하기에는 2.4~ 2.7버전에서 실행이 된다. 이러한 버전을 맞춰주지 않는다면 dependency 늪에 빠져 나오기 힘들었다. 이러한 jekyll.yml 파일이 실제로 build Log를 보며 고치기란 정말 쉽지 않았다. 나는 여기서 Ruby버전을 2.7.7 버젼으로 맞추고 실행하였다.
+
+Actions텝에 가보면 이제 실제 빌드할 내용들이 있는데 중요하게 봐야할껀 Ruby버전이다. 초기설정에는 최신버전인 3.2, 3.1이 써져있으나, 테마를 빌드하기에는 2.3 ~ 2.7버전에서 실행이 된다. 버전을 맞춰주지 않는다면 dependency 늪에 빠져 나오기 힘들었다.(실제로 빌드도 안된다.)  jekyll.yml 파일이 실제로 build되고, build된 Log를 보며 고치기란 정말 쉽지 않았다. 나는 여기서 Ruby버전을 2.7.7 버젼으로 맞추고 실행했다.
 
 <p style="color: red;">Troubleshooting</p>
 ![Troubleshooting](https://user-images.githubusercontent.com/57931679/226149383-f41073a7-2882-434c-8089-ceb8190436ea.png)
