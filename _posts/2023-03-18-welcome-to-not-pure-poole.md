@@ -3,7 +3,7 @@ layout: post
 title: Welcome to Blog
 date: 2023-03-18 00:00 +0800
 last_modified_at: 2023-03-18 00:08:25 +0800
-tags: [jekyll theme, jekyll, tutorial]
+tags: [jekyll theme, jekyll, tutorial, blog]
 toc:  true
 ---
 **Git hub를 이용한 블로그 만들기**!
