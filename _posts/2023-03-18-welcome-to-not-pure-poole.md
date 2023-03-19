@@ -31,26 +31,25 @@ jeKyll를 설치하려면 우선 Ruby를 설치해야하지만 가장 좋은 방
 <a href="http://jekyllthemes.org/">http://jekyllthemes.org/</a>  
 나는 가장 마음에는 고양이 사진이있어서 "Not Pure Poole"이라는 테마를 골랐다.
  
-![screenshot.png](/img/20230318/selectthema.png)
+![selectthema](https://user-images.githubusercontent.com/57931679/226149321-0c5257bc-7d79-4b2d-9b72-3fa864017ac8.png)
 
 "Hompage"라는 버튼 을 선택해서 "Not Pure Poole"이라는 테마 소스들을 확인 할수가 있다. README.md 파일에는 사용방법과 설치방법이 나와있지만 아직은 Ruby를 설치하거나(gem명령어를 사용하려면 Ruby를 설치해야한다.) _config.yml파일을 수정하는 방법은 어려워 택하지 않았다.
 
-![screenshot.png](/img/20230318/fork.png)
+![fork](https://user-images.githubusercontent.com/57931679/226149274-19b8bf92-bf0f-4634-9d5c-ddb2df24c7e7.png)
 우측 맨 상단에 Fork버튼을 클릭해서 내 레파지토리에 저장한다.
 
-![screenshot.png](/img/20230318/fork2.png)
+![fork2](https://user-images.githubusercontent.com/57931679/226149331-0512772a-6bde-454d-bc76-a378cddadc23.png)
 Fork로 이름을 지을때에는 "username".github.io 이렇게 입력합니다.
 
-
-![screenshot.png](/img/20230318/jellkey.png)
+![jellkey](https://user-images.githubusercontent.com/57931679/226149349-cadf7680-6397-4dec-93f6-b9d2d46d8d88.png)
 내 레파지토리로 옮겨진 졌다면, 레파지토리 상단에 <b>Setting > Pages > Branch > main or master</b> 를 선택하고 Save버튼을 클릭해 저장해 준다.
 
-![screenshot.png](/img/20230318/rubyversion.png)
-![screenshot.png](/img/20230318/rubyversion2.png)
+![rubyversion](https://user-images.githubusercontent.com/57931679/226149362-7b2aeb55-7b47-47b6-b690-9796c4379388.png)
+![rubyversion2](https://user-images.githubusercontent.com/57931679/226149375-f57011c1-d7a5-4b93-9d02-2361e5255b88.png)
 여기서 중요한건 Ruby버전이다. 초기에는 최신버전인 3.2, 3.1이 써져있으나, 테마를 빌드하기에는 2.4~ 2.7버전에서 실행이 된다. 이러한 버전을 맞춰주지 않는다면 dependency 늪에 빠져 나오기 힘들었다. 이러한 jekyll.yml 파일이 실제로 build Log를 보며 고치기란 정말 쉽지 않았다. 나는 여기서 Ruby버전을 2.7.7 버젼으로 맞추고 실행하였다.
 
 <p style="color: red;">Troubleshooting</p>
-![screenshot.png](/img/20230318/Troubleshooting.png)
+![Troubleshooting](https://user-images.githubusercontent.com/57931679/226149383-f41073a7-2882-434c-8089-ceb8190436ea.png)
 <p style="color: red;">Time.now.strftime('%Y-%m-%d %H:%M:%S %z') %>': Document 'vendor/cache/gems/jekyll-3.2.1/lib/site_template/_posts/0000-00-00-welcome-to-jekyll.markdown.erb' does not have a valid date in the YAML front matter.
 </p>
 vendor 디렉토리를  _config.yml안에 exclude: 영역에 추가를 해주었다.
