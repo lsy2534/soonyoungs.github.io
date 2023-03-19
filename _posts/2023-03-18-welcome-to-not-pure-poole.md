@@ -58,11 +58,10 @@ vendor 디렉토리를  _config.yml안에 exclude: 영역에 추가를 해주었
 실제 해결방법을 한 이슈 <a href="https://github.com/jekyll/jekyll/issues/5267">https://github.com/jekyll/jekyll/issues/5267</a>  
 
 
-이제 실제로 우리만의 블로그 사이트가 잘 작동하는것을 볼수있을것이다.
 
 ## Ruby Installer
 
 ><a href="https://rubyinstaller.org/downloads/">Ruby Installer</a>
 
-Github에서 빌드 및 실행이되는 Ruby버전은 2.4 ~ 2.7 버전에서 빌드가 된다. 루비를 설치해 로컬에서부터 실행하다보니 이게 왜안되는지 찾기보다 dependency 늪에 빠져 나오기 힘들었다.
+Github에서 빌드 및 실행이되는 Ruby버전은 2.4 ~ 2.7 버전에서 빌드가 된다. 루비를 설치해 로컬에서부터 실행하다보니 이게 왜안되는지 찾기보다 dependency 늪에 빠져 나오기 힘들었다. 버전별로 gem을 인스톨해봐도 어디선가 어긋나는 부분이 많아 실행이 되지 않았다.
 
