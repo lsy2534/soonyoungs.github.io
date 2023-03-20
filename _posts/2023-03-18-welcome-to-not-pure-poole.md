@@ -29,7 +29,7 @@ jeKyll를 설치하려면 우선 Ruby를 설치해야하지만 가장 좋은 방
 ## 맘에드는 내 테마 고르기
 
 <a href="http://jekyllthemes.org/">http://jekyllthemes.org/</a>  
-나는 가장 마음에는 고양이 사진이있어서 "Not Pure Poole"이라는 테마를 골랐다.
+난 내가 가장 좋아하는 고양이가 있어서  첫 기본프로필이 "Not Pure Poole"이라는 테마를 골랐다.
  
 ![selectthema](https://user-images.githubusercontent.com/57931679/226149321-0c5257bc-7d79-4b2d-9b72-3fa864017ac8.png)
 
