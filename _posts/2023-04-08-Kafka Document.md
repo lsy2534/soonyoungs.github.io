@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Apache Zoopkeeper config
+title: Apache Kafka config
 date: 2023-04-08 00:00 +0800
 last_modified_at: 2023-04-08 00:08:25 +0800
 tags: [Kafka, kafka , Kafka.cnf, Apache Kakfa Document]
@@ -24,7 +24,8 @@ kafka Document
 
 ### control.plane.listener.name 
 
-컨트롤러와 브로커 간 통신에 사용되는 리스너의 이름입니다. 브로커는 control.plane.listener.name을 이용하여 컨트롤러로부터의 연결 요청을 받기 위해 리스너 목록에서 엔드포인트를 찾습니다. 예를 들어, 브로커의 구성이 다음과 같다면:
+
+> 컨트롤러(리더브로커)와 브로커 간 통신에 사용되는 리스너의 이름입니다. 브로커는 control.plane.listener.name을 이용하여 컨트롤러로부터의 연결 요청을 받기 위해 리스너 목록에서 엔드포인트를 찾습니다. 예를 들어, 브로커의 구성이 다음과 같다면:
 
 listeners = INTERNAL://192.1.1.8:9092, EXTERNAL://10.1.1.5:9093, CONTROLLER://192.1.1.8:9094
 listener.security.protocol.map = INTERNAL:PLAINTEXT, EXTERNAL:SSL, CONTROLLER:SSL
