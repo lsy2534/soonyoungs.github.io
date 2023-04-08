@@ -44,7 +44,8 @@ controller.quorum.election.backoff.max.ms=2000
 delete.topic.enable=true
 
 #early.start.listeners=CONTROLLER,INTERNAL
-
+#leader.imbalance.check.interval.seconds=300
+#leader.imbalance.per.broker.percentage=10
 # Maps listener names to security protocols, the default is for them to be the same. See the config documentation for more details
 listener.security.protocol.map=PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL
 
@@ -139,3 +140,11 @@ early.start.listeners는 authorizer가 초기화 작업을 완료하기 전에 �
 ACL은 Access Control List의 약자로, 접근 제어 목록을 의미합니다. 즉, 사용자나 프로세스가 어떤 자원에 접근할 때, 해당 자원에 대한 접근 권한이 있는지를 확인하는 보안 메커니즘입니다. 카프카에서 ACL을 사용하면, 특정 topic에 대한 읽기/쓰기 권한을 가진 사용자나 애플리케이션만 해당 주제에 접근할 수 있도록 제어할 수 있습니다. 이를 통해 카프카의 보안을 강화할 수 있습니다.
 
 early.start.listeners=CONTROLLER
+
+### leader.imbalance.check.interval.seconds 
+
+파티션 리더 불균형을 확인하는 빈도를 결정합니다. 예를 들어, 이 속성이 300으로 설정되어 있으면, Kafka는 5분마다 파티션 리더 불균형을 확인합니다. 이 속성은 브로커 리더 불균형 문제를 신속하게 탐지하고 해결하기 위해 사용됩니다.
+
+### leader.imbalance.per.broker.percentage
+
+하나의 브로커에 대한 파티션 리더 비율이 다른 브로커들에 비해 얼마나 많이 불균형한지를 결정합니다. 예를 들어, 만약 이 속성이 10으로 설정되어 있고 브로커 A, B, C가 있고, 각각의 리더 파티션 수가 100, 150, 50이라면, B 브로커가 가장 많은 파티션 리더를 가지고 있기 때문에 불균형 정도는 (150-100)/100 * 100% = 50%가 됩니다. 이 속성은 브로커 리더 불균형 문제를 해결하기 위해 사용됩니다.
