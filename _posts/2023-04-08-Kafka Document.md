@@ -41,7 +41,9 @@ controller.quorum.election.timeout.ms=1000
 
 controller.quorum.election.backoff.max.ms=2000
 
-delete.topic.enable=false
+delete.topic.enable=true
+
+#early.start.listeners=CONTROLLER,INTERNAL
 
 # Maps listener names to security protocols, the default is for them to be the same. See the config documentation for more details
 listener.security.protocol.map=PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL
@@ -109,13 +111,6 @@ control.plane.listener.name = CONTROLLER
 리더로부터 가져올 수 없는 경우 새로운 선거를 트리거하기 전에 기다릴 수 있는 최대 시간(밀리초)입니다.
 'controller.quorum.election.backoff.max.ms' 같이 사용하여 충돌이 발생하는 것을 방지할 수 있다. 
 
-### controller.quorum.election.backoff.max.ms
-다수의 카프카 컨트롤러가 서로 경쟁하는 경우에 사용됩니다. 이 속성은 현재 리더에서 메시지를 가져올 수 없는 경우 새로운 선거를 시작하기 위해 기다릴 수 있는 최대 시간을 지정합니다.
-
-또한 이 속성은 다수의 카프카 컨트롤러가 현재 레플리카 세트를 제대로 동기화하지 못했을 때 새로운 리더 Epoch가 있을 수 있는지 확인하기 위해 이전 Epoch와 다른 Epoch로 쿼리를 수행하는 데 사용됩니다.
-
-Epoch란 Broker나 Controller에서 사용되는 일련 번호(sequence number)를 의미합니다. Epoch는 Kafka의 레코드(log record)와 같은 데이터의 순서와 동기화를 유지하는 데 사용됩니다. Broker 또는 Controller는 이전 Epoch의 값을 알고 있다면 이전에 처리되지 않은 요청에 대한 처리를 건너뛰고 바로 새로운 Epoch로 넘어갈 수 있습니다
-
 ### advertised.port
 
 Kafka에서 advertised.port는 브로커가 자신의 IP 주소와 포트 번호를 클라이언트에게 알리는 데 사용되는 설정 속성입니다. 이 속성은 클라이언트가 브로커에 연결하기 위해 사용할 수 있는 IP 주소와 포트 번호를 지정합니다. 예를 들어, 브로커가 내부 IP 주소와 9092 포트로 바인딩되어 있고, 외부에서는 공인 IP 주소와 9094 포트로 접근할 수 있다면, advertised.port 설정은 9094로 지정됩니다. 이렇게 함으로써 외부 클라이언트는 공인 IP 주소와 9094 포트로 브로커에 연결할 수 있습니다. 또한, advertised.port 설정은 클라우드 환경에서 브로커가 가상 IP 주소와 포트로 연결되어 있는 경우에도 유용합니다. 이 경우 브로커가 실제로 바인딩되어 있는 IP 주소와 포트가 아닌, 가상 IP 주소와 포트로 클라이언트에게 연결 정보를 전달할 수 있습니다.
@@ -136,3 +131,11 @@ compression.type으로 설정할 수 있는 값으로는 "none", "gzip", "snappy
 
 하지만, delete.topic.enable 값을 true로 설정하면 Kafka에서 토픽을 삭제할 수 있습니다. 이 경우에는 삭제된 토픽에 저장된 데이터는 완전히 삭제되며, 데이터 복구가 불가능합니다. 따라서, 신중히 사용해야 하며, 특히 운영 환경에서는 조심해서 사용해야 합니다.
 
+
+### early.start.listeners
+
+early.start.listeners는 authorizer가 초기화 작업을 완료하기 전에 시작될 수 있는 리스너 이름 목록을 쉼표로 구분하여 지정하는 속성입니다. 이 속성은 StandardAuthorizer와 같이 ACL을 메타데이터 로그에 저장하는 authorizer가 클러스터 자체에 부트스트랩에 의존하는 경우에 유용합니다. 기본적으로는 controller.listener.names에 포함된 모든 리스너도 early start listeners로 구성됩니다. 외부 트래픽을 수신하는 리스너는 이 목록에 나타나면 안됩니다.
+
+ACL은 Access Control List의 약자로, 접근 제어 목록을 의미합니다. 즉, 사용자나 프로세스가 어떤 자원에 접근할 때, 해당 자원에 대한 접근 권한이 있는지를 확인하는 보안 메커니즘입니다. 카프카에서 ACL을 사용하면, 특정 topic에 대한 읽기/쓰기 권한을 가진 사용자나 애플리케이션만 해당 주제에 접근할 수 있도록 제어할 수 있습니다. 이를 통해 카프카의 보안을 강화할 수 있습니다.
+
+early.start.listeners=CONTROLLER
