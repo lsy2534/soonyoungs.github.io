@@ -41,3 +41,7 @@ listener.security.protocol.map = INTERNAL:PLAINTEXT, EXTERNAL:SSL, CONTROLLER:SS
 control.plane.listener.name = CONTROLLER
 
 컨트롤러는 "broker1.example.com:9094"에서 "SSL" 보안 프로토콜을 사용하여 브로커에 연결합니다. 명시적으로 구성되지 않으면 기본값은 null이며 컨트롤러 연결에 대한 전용 엔드포인트가 없습니다. 명시적으로 구성하는 경우 inter.broker.listener.name 값과 동일할 수 없습니다.
+
+### advertised.port
+
+> Kafka에서 advertised.port는 브로커가 자신의 IP 주소와 포트 번호를 클라이언트에게 알리는 데 사용되는 설정 속성입니다. 이 속성은 클라이언트가 브로커에 연결하기 위해 사용할 수 있는 IP 주소와 포트 번호를 지정합니다. 예를 들어, 브로커가 내부 IP 주소와 9092 포트로 바인딩되어 있고, 외부에서는 공인 IP 주소와 9094 포트로 접근할 수 있다면, advertised.port 설정은 9094로 지정됩니다. 이렇게 함으로써 외부 클라이언트는 공인 IP 주소와 9094 포트로 브로커에 연결할 수 있습니다. 또한, advertised.port 설정은 클라우드 환경에서 브로커가 가상 IP 주소와 포트로 연결되어 있는 경우에도 유용합니다. 이 경우 브로커가 실제로 바인딩되어 있는 IP 주소와 포트가 아닌, 가상 IP 주소와 포트로 클라이언트에게 연결 정보를 전달할 수 있습니다.
