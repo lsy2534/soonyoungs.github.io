@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MariaDB Galera Cluster
+title: MariaDB tar 수동 설치
 date: 2023-05-24 00:00 +0800
 last_modified_at: 2023-05-24 00:08:25 +0800
 tags: [CentOS 8 Stream, MariaDB 수동 설치, tar 수동 설치]
