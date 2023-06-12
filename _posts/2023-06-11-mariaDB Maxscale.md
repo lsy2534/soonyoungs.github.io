@@ -44,9 +44,9 @@ OS : Red Hat Enterprise Linux 8.4
 
 Maxscale 구성 필요 파일 및 라이브러리
 
-maxscale-23.02.2.rhel.8-2.tar.gz
-unixODBC-2.3.11-1.rh.x86_64.rpm
-libatomic-8.5.0-2.el8.x86_64.rpm
+maxscale-23.02.2.rhel.8-2.tar.gz  
+unixODBC-2.3.11-1.rh.x86_64.rpm  
+libatomic-8.5.0-2.el8.x86_64.rpm  
 
 실습 예제에서는 아래와 같은 디렉토리 구조에서 실습 하겠습니다. 
 ```
