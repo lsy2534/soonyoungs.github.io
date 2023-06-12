@@ -55,13 +55,13 @@ libatomic-8.5.0-2.el8.x86_64.rpm
 
 ## MaxScale tar 압축 해제 및 이동
 
-tar zxvf maxscale-23.02.2.rhel.8-2.tar.gz
-mv maxscale-23.02.2.rhel.8-2 /app/maxscale
+tar zxvf maxscale-23.02.2.rhel.8-2.tar.gz  
+mv maxscale-23.02.2.rhel.8-2 /app/maxscale  
 cd /app/maxscale
 
 ## 라이브러리 설치
-sudo rpm -i unixODBC-2.3.11-1.rh.x86_64.rpm
-sudo rpm -i libatomic-8.5.0-2.el8.x86_64.rpm
+sudo rpm -i unixODBC-2.3.11-1.rh.x86_64.rpm  
+sudo rpm -i libatomic-8.5.0-2.el8.x86_64.rpm  
 
 ## 관련 config 생성
 ```
