@@ -1,17 +1,17 @@
 ---
 layout: post
-title: Maxscale Log error
+title: Maxscale error Log
 date: 2023-07-24 00:00 +0800
 last_modified_at: 2023-07-24 00:08:25 +0800
 tags: [Maxscale ]
 categoie: [Maxscale]
 topic:  true
 ---
-**MariaDB Master**!
+**MaxScale error log**!
 {: .message }
 
 
-### MariaDB Master
+### MaxScale error log
 
 MariaDB maxscale 구성 후 2달이 지나 로그를 확인 한 결과 새벽에 에러가 발생하고 있었다.   
 에러 내용은 다음과 같다.
