@@ -55,8 +55,30 @@ topic:  true
 
 신경망 출력은 이미지가 각 클래스에 속할 확률이기 떄문에 이미지의 정수 레이블을 원 핫 인코딩된(*카테고리형 데이터 를 숫자로 변환)  
 
+### 2.1 데이터 준비
+```
+import numpy as np
+import matplotlib.pyplot as plt
+
+from tensorflow.keras import layers, models, optimizers, utils, datasets
+from notebooks.utils import display
+
+NUM_CLASSES = 10
+
+(x_train, y_train), (x_test, y_test) = datasets.cifar10.load_data()
+
+x_train = x_train.astype("float32") / 255.0
+x_test = x_test.astype("float32") / 255.0
+
+y_train = utils.to_categorical(y_train, NUM_CLASSES)
+y_test = utils.to_categorical(y_test, NUM_CLASSES)
+
+display(x_train[:10])
+print(y_train[:10])
+```
+
+### 2.2 모델만들기
 
 ```
 
 ```
-
