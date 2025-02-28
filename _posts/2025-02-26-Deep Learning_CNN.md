@@ -46,4 +46,89 @@ CNN에서 합성곱(Convolution) 연산을 할 때, 필터(커널)가 이미지 
 
 여백 없이 그리면 그림이 종이 끝에서 잘릴 수도 있음 (패딩 없음)
 여백을 추가하면 끝까지 다 그릴 수 있음 (패딩 있음)
+
+특징 맵(Feature Map)
+컨볼루션 연산을 수행한 결과
+필터가 입력 데이터에서 어떤 특징을 감지했는지를 나타내는 출력 값
+
+폴링(Pooling)
+풀링은 특징 맵의 크기를 중이는 과정
+불필요한 정보는 버리고, 중요한 정보만 유지하면서 계산량을 줄여주는 역할
+
+📌 대표적인 풀링 기법
+
+맥스 풀링(Max Pooling) → 해당 영역에서 가장 큰 값을 선택
+평균 풀링(Average Pooling) → 해당 영역의 평균 값을 선택
 ```
+
+CNN을 이용한 이미지 분류(Image Classification) 과정
+
+1. 입력 데이터 (이미지) 준비
+2. 합성곱(Convolution) & ReLU 적용
+ - **"필터"**를 이용해 이미지의 특징을 추출
+ - 필터를 이동하면서 특징 맵 생성
+ - ReLu 활성화 함수 적용
+   -  음수를 0으로 바꿔서 비선형성을 추가
+3. 폴링(Pooling)으로 특징 맵 크기 축소
+4. 완전 연결 신경망(FC Layer) 적용
+ - Flatten(평탄화) : 2D 특징 맵을 1D 벡터로 변환
+ - 완전 연결층(FC Layer): 신경망을 통해 분류 작업 진행
+
+ 5. 소프트맥스(Softmax)로 클래스 활률 계산
+ 6. 출력
+
+ 파이썬 + TensorFlow/Keras를 활용해서 간단한 이미지 분류 만들기
+
+ MNIST(손글씨 숫자 데이터)를 활용하여 데이터셋 만들기
+
+ ```
+import tensorflow as tf
+from tensorflow import keras
+import matplotlib.pyplot as plt
+import numpy as np
+
+# MNIST 데이터셋 불러오기와 튜플로 변환환
+mnist = keras.datasets.mnist
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+
+# 데이터 정규화 (0~255 범위를 0~1로 변환)
+x_train, x_test = x_train / 255.0, x_test / 255.0
+
+# 입력 데이터를 CNN에 맞게 차원 추가 (채널 추가)
+x_train = x_train.reshape(-1, 28, 28, 1)
+x_test = x_test.reshape(-1, 28, 28, 1)
+
+
+# reshape(-1, 28, 28, 1)
+# CNN 모델은 4D 텐서(배치, 높이, 너비, 채널)를 입력으로 받음.
+# 흑백 이미지니까 채널 1개(Grayscale) 추가함.
+```
+
+# CNN 모델 만들기
+
+합성곱 신경망(CNN) 모델을 만들기
+```
+model = keras.Sequential([
+    #첫 번째 합성곱 층 (Conv2D) + 활성화 함수 (ReLU)
+    keras.layers.Conv2D(32, (3,3), activation='relu', input_shape=(28, 28, 1)),
+    keras.layers.MaxPooling2D((2,2)),  # 맥스 풀링(Max Pooling)
+
+    # 두 번째 합성곱 층 (Conv2D) + 활성화 함수 (ReLU)
+    keras.layers.Conv2D(64, (3,3), activation='relu'),
+    keras.layers.MaxPooling2D((2,2)),  # 다시 맥스 풀링
+
+    keras.layers.Flatten(),  # 2D 데이터를 1D로 변환
+    keras.layers.Dense(128, activation='relu'),  # 완전 연결층(Dense Layer)
+    keras.layers.Dense(10, activation='softmax')  #  출력층 (10개의 클래스)
+])
+
+# 모델 컴파일
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+# 모델 구조 확인
+model.summary()
+
+```
+
