@@ -235,3 +235,9 @@ superpowers: npx -y superpowers-mcp
 
 이 4가지 플러그인을 함께 사용하면 Claude Code가 단순한 코드 생성 도구를 넘어  
 **설계 → 구현 → 검증 → 정리**까지 전 개발 사이클을 커버하는 AI 페어 프로그래머로 거듭난다.
+
+---
+
+# 참고 문헌
+
+- [Instagram Reel - Claude Code 플러그인 소개](https://www.instagram.com/reel/DXlDlY7E07o/?igsh=MThhaXVuYm85bGR4Zg==)
