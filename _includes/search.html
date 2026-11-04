@@ -1,0 +1,79 @@
+<div class="site-search" id="site-search">
+  <div class="site-search-box">
+    <svg class="site-search-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <input type="search" id="site-search-input" placeholder="카테고리·태그·제목 검색" autocomplete="off" aria-label="블로그 검색">
+  </div>
+  <div class="site-search-panel" id="site-search-panel" hidden>
+    <div class="site-search-chips" id="site-search-chips"></div>
+    <ul class="site-search-results" id="site-search-results"></ul>
+  </div>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('site-search-input');
+  var panel = document.getElementById('site-search-panel');
+  var chipsEl = document.getElementById('site-search-chips');
+  var resultsEl = document.getElementById('site-search-results');
+  var posts = null, labels = [];
+
+  function norm(s) { return (s || '').toString().toLowerCase().replace(/\s+/g, ''); }
+  function esc(s) { return (s || '').toString().replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
+  function load() {
+    if (posts) return Promise.resolve(posts);
+    return fetch('{{ "/search.json" | relative_url }}').then(function (r) { return r.json(); }).then(function (data) {
+      posts = data;
+      var seen = {};
+      data.forEach(function (p) {
+        (p.categories || []).concat(p.tags || []).forEach(function (t) {
+          t = (t || '').trim(); var k = norm(t);
+          if (!k) return;
+          if (!seen[k]) { seen[k] = { name: t, count: 0 }; labels.push(seen[k]); }
+          seen[k].count++;
+        });
+      });
+      labels.sort(function (a, b) { return b.count - a.count; });
+      return posts;
+    });
+  }
+
+  function render(q) {
+    var nq = norm(q);
+    var matchedLabels = labels.filter(function (l) { return !nq || norm(l.name).indexOf(nq) > -1; }).slice(0, 12);
+    chipsEl.innerHTML = matchedLabels.map(function (l) {
+      return '<button type="button" class="site-search-chip" data-q="' + esc(l.name) + '">' + esc(l.name) + ' <span>' + l.count + '</span></button>';
+    }).join('');
+
+    if (!nq) { resultsEl.innerHTML = ''; return; }
+    var hits = posts.filter(function (p) {
+      var hay = norm(p.title) + '|' + norm((p.tags || []).join('|')) + '|' + norm((p.categories || []).join('|'));
+      return hay.indexOf(nq) > -1;
+    });
+    resultsEl.innerHTML = hits.length ? hits.slice(0, 20).map(function (p) {
+      var tags = (p.categories || []).concat(p.tags || []).map(function (t) { return '<span class="site-search-tag">' + esc(t) + '</span>'; }).join('');
+      return '<li><a href="' + esc(p.url) + '"><strong>' + esc(p.title) + '</strong><small>' + esc(p.date) + '</small><div>' + tags + '</div></a></li>';
+    }).join('') : '<li class="site-search-empty">검색 결과가 없어요 🍂</li>';
+  }
+
+  function open() { load().then(function () { panel.hidden = false; render(input.value); }); }
+
+  input.addEventListener('focus', open);
+  input.addEventListener('input', function () {
+    open();
+    if (window.filterTaxonomies) window.filterTaxonomies(input.value);
+  });
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { panel.hidden = true; input.blur(); }
+    if (e.key === 'Enter') { var a = resultsEl.querySelector('a'); if (a) location.href = a.href; }
+  });
+  chipsEl.addEventListener('mousedown', function (e) {
+    var b = e.target.closest('.site-search-chip'); if (!b) return;
+    e.preventDefault(); input.value = b.getAttribute('data-q'); render(input.value);
+    if (window.filterTaxonomies) window.filterTaxonomies(input.value);
+  });
+  document.addEventListener('click', function (e) {
+    if (!document.getElementById('site-search').contains(e.target)) panel.hidden = true;
+  });
+})();
+</script>

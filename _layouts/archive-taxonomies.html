@@ -77,7 +77,29 @@ layout: default
   {%- endfor -%}
 {%- endfor -%}
 
+<p class="taxonomy-empty" id="taxonomy-empty" hidden>검색어와 일치하는 항목이 없어요 🍂</p>
+
 <script>
+  // 상단 검색창에 입력하면 이 페이지의 목록도 함께 걸러집니다
+  window.filterTaxonomies = function (q) {
+    var nq = (q || '').toLowerCase().replace(/\s+/g, '');
+    var any = false;
+    document.querySelectorAll('.taxonomies li').forEach(function (li) {
+      var hit = !nq || li.textContent.toLowerCase().replace(/\s+/g, '').indexOf(nq) > -1;
+      li.hidden = !hit;
+      var a = li.querySelector('a');
+      var id = a && a.getAttribute('href').split('#')[1];
+      var h = id && document.getElementById(decodeURIComponent(id));
+      if (h) {
+        h.hidden = !hit;
+        var el = h.nextElementSibling;
+        while (el && el.tagName !== 'H2') { el.hidden = !hit; el = el.nextElementSibling; if (el && el.id === 'taxonomy-empty') break; }
+      }
+      if (hit) any = true;
+    });
+    document.getElementById('taxonomy-empty').hidden = any || !nq;
+  };
+
   function backToTop() {
     const main = document.getElementById("site-main");
     main.scrollTop = 0;
