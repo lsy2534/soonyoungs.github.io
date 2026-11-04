@@ -1,0 +1,140 @@
+// Winter theme
+// _autumn.scss 위에 덮어쓰는 겨울 스타일입니다.
+// 가을로 되돌리려면 assets/styles.scss 에서 @import "winter"; 한 줄만 지우세요.
+// (변수 이름 --maple/--mustard 는 각각 "주 강조색"/"보조 강조색" 의미로 그대로 씁니다)
+
+:root {
+  --gray-000: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e3e9f0;
+  --gray-300: #d3dce6;
+  --gray-400: #b3c0ce;
+  --gray-500: #8b9aab;
+  --gray-600: #66778a;
+  --gray-700: #3d4a5a;
+  --gray-800: #243040;
+  --gray-900: #172130;
+
+  --maple: #3b6894;        // 겨울 밤하늘 블루
+  --maple-dark: #284c70;
+  --maple-soft: #e6eef7;
+  --mustard: #5a86b0;      // 얼음 블루
+  --mustard-soft: #eaf2fa;
+  --bark: #1d2b3d;
+
+  --body-color: var(--gray-700);
+  --body-bg: #f5f8fb;
+  --card-bg: #ffffff;
+  --heading-color: var(--gray-900);
+  --link-color: var(--maple);
+  --link-hover-color: var(--maple-dark);
+  --border-color: var(--gray-200);
+
+  --shadow: 0 1px 2px rgba(23, 33, 48, .04), 0 6px 20px -8px rgba(23, 33, 48, .10);
+  --shadow-hover: 0 2px 4px rgba(23, 33, 48, .05), 0 14px 32px -12px rgba(40, 76, 112, .25);
+
+  --code-color: #284c70;
+  --code-bg: #eef3f8;
+
+  --sidebar-bg: linear-gradient(170deg, #142030 0%, #1f3550 45%, #35577c 80%, #5c82a8 100%);
+  --sidebar-color: #eef4fa;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --body-color: #c9d4e0;
+    --body-bg: #10151c;
+    --card-bg: #171f29;
+    --heading-color: #eef4fa;
+    --link-color: #8fb8e0;
+    --link-hover-color: #b5d2ee;
+    --maple: #8fb8e0;
+    --maple-dark: #b5d2ee;
+    --mustard: #7fa6cc;
+    --gray-200: #243040;
+    --gray-300: #2f3b4b;
+    --gray-500: #7f8ea0;
+    --gray-600: #9aa9ba;
+    --maple-soft: rgba(143, 184, 224, .13);
+    --mustard-soft: rgba(143, 184, 224, .12);
+    --border-color: rgba(238, 244, 250, .09);
+    --code-color: #b5d2ee;
+    --code-bg: #1b2531;
+    --sidebar-bg: linear-gradient(170deg, #0a1018 0%, #121d2b 50%, #1e3048 100%);
+  }
+  .post-meta time { color: #a9c8e6; }
+  .post h3, .page h3 { color: #a9c8e6; }
+  a.pagination-item:hover { color: #10151c; }
+  .site-search-chip:hover { color: #10151c; }
+}
+
+// ───── Sidebar: 눈 내리는 밤 ─────
+.sidebar-left {
+  &::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.16' stroke-width='1.4' stroke-linecap='round'%3E%3Cg transform='translate(34 36)'%3E%3Cpath d='M0-9V9M-7.8-4.5L7.8 4.5M-7.8 4.5L7.8-4.5'/%3E%3C/g%3E%3Cg transform='translate(118 92) scale(.7)'%3E%3Cpath d='M0-9V9M-7.8-4.5L7.8 4.5M-7.8 4.5L7.8-4.5'/%3E%3C/g%3E%3Cg transform='translate(62 132) scale(.5)'%3E%3Cpath d='M0-9V9M-7.8-4.5L7.8 4.5M-7.8 4.5L7.8-4.5'/%3E%3C/g%3E%3C/g%3E%3Cg fill='%23ffffff' fill-opacity='0.22'%3E%3Ccircle cx='96' cy='22' r='1.6'/%3E%3Ccircle cx='14' cy='98' r='1.2'/%3E%3Ccircle cx='140' cy='146' r='1.4'/%3E%3Ccircle cx='80' cy='70' r='1'/%3E%3C/g%3E%3C/svg%3E");
+    animation: snowfall 30s linear infinite;
+  }
+
+  &::after {
+    height: 30%;
+    background: radial-gradient(ellipse at 50% 130%, rgba(255, 255, 255, .22), transparent 70%);
+  }
+}
+
+@keyframes snowfall {
+  from { background-position: 0 0; }
+  to   { background-position: 40px 160px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar-left::before { animation: none; }
+}
+
+.masthead-title a:hover,
+.masthead-title a:focus,
+.social-icon:hover,
+.social-icon:focus { color: #cfe3f5; }
+
+.masthead-tagline::before { content: "❄ "; }
+
+.navigation-item a {
+  border-color: rgba(238, 244, 250, .35);
+
+  &:hover, &:focus {
+    color: var(--bark);
+    background: #eef4fa;
+    border-color: #eef4fa;
+  }
+}
+
+.avatar-image {
+  border-color: rgba(238, 244, 250, .9);
+}
+
+// ───── 본문 ─────
+.post-entry::before {
+  background: linear-gradient(#a9c8e6, var(--maple));
+}
+
+.post-meta time {
+  color: var(--maple);
+}
+
+blockquote,
+.message {
+  background: var(--mustard-soft);
+  border-left-color: var(--mustard);
+}
+
+thead th { border-bottom-color: var(--maple) !important; }
+
+.site-search-tag { color: var(--maple); }
+
+.site-search-empty::after,
+.taxonomy-empty::after { content: " ❄"; }
+
+.toc-title {
+  background: var(--bark);
+  border-color: var(--bark);
+  color: #eef4fa;
+}

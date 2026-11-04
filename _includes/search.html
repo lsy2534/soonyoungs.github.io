@@ -53,7 +53,7 @@
     resultsEl.innerHTML = hits.length ? hits.slice(0, 20).map(function (p) {
       var tags = (p.categories || []).concat(p.tags || []).map(function (t) { return '<span class="site-search-tag">' + esc(t) + '</span>'; }).join('');
       return '<li><a href="' + esc(p.url) + '"><strong>' + esc(p.title) + '</strong><small>' + esc(p.date) + '</small><div>' + tags + '</div></a></li>';
-    }).join('') : '<li class="site-search-empty">검색 결과가 없어요 🍂</li>';
+    }).join('') : '<li class="site-search-empty">검색 결과가 없어요</li>';
   }
 
   function open() { load().then(function () { panel.hidden = false; render(input.value); }); }

@@ -47,7 +47,7 @@ img {
 
 // ───── Sidebar ─────
 .sidebar-left {
-  position: relative;
+  // 데스크톱에서는 원래대로 position: fixed (모바일만 relative, 아래 미디어쿼리 참고)
   background: var(--sidebar-bg) !important;
   color: var(--sidebar-color) !important;
   overflow-x: hidden;
@@ -412,6 +412,7 @@ a.pagination-item {
 @media (max-width: $md-width) {
   .avatar-image { max-height: 30vh; max-width: 45%; }
   .sidebar-left {
+    position: relative;
     height: auto;
     padding: var(--spacer-3) var(--spacer);
   }
@@ -558,4 +559,47 @@ a.pagination-item {
 @media (max-width: $sm-width) {
   .site-search { max-width: none; flex-basis: 100%; }
   .site-search-panel { left: 0; right: auto; width: 100%; }
+}
+
+.site-search-empty::after,
+.taxonomy-empty::after { content: " 🍂"; }
+
+// ───── 레이아웃: 본문을 남는 공간의 가운데로 ─────
+@media (min-width: $md-width) {
+  .content {
+    width: 75% !important;
+    margin-left: 25%;
+    margin-right: 0;
+  }
+
+  .content > main,
+  .content > footer {
+    max-width: 46rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .post, .page { max-width: none; }
+}
+
+// 목차(TOC)가 있는 글: 목차는 오른쪽에 고정, 본문은 나머지 공간의 가운데
+@media (min-width: $lg-width) {
+  .sidebar-right {
+    position: fixed;
+    top: var(--spacer-3);
+    right: var(--spacer-2);
+    width: 15rem;
+    max-height: calc(100vh - 6rem);
+  }
+
+  .toc-wrapper {
+    position: static;
+    display: block;
+    width: 100%;
+    padding: 0;
+  }
+
+  .content.has-toc {
+    padding-right: calc(15rem + var(--spacer-3) + var(--spacer));
+  }
 }
