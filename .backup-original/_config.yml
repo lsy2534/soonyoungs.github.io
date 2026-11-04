@@ -1,0 +1,60 @@
+# Setup
+title: Soon Blog
+description: Troubleshooting Diary
+url: https://lsy2534.github.io/soonyoungs.github.io/
+avatar: /avatar_soon.jpg
+paginate: 5
+permalink: pretty
+cover_image: /bg_soon.jpg
+
+# Gems
+plugins:
+  - jekyll-gist
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Optimize Jekyll
+exclude:
+  - .editorconfig
+  - .git
+  - .jekyll-cache
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE.md
+  - README.md
+  - scripts/
+  - not-pure-poole.gemspec
+#add 추가 gem설치시 Time.now.strftime('%Y-%m-%d %H:%M:%S %z') %>': Document 'vendor/cache/gems/jekyll-3.2.1/lib/site_template/_posts/0000-00-00-welcome-to-jekyll.markdown.erb' does not have a valid date in the YAML front matter.
+  - vendor
+
+# Optimize Jekyl SEO Tag
+instargram:
+  username: Sunyoung
+  card: summary
+logo: screenshot.png
+social:
+  name: so
+  links:
+    - https://github.com/lsy2534
+    - https://github.com/lsy2534
+google_site_verification: xxxxx
+lang: en
+
+sass:
+  sass_dir: _sass
+  style: :compressed
+
+# Options
+
+# Replace this value and uncomment to enable Google Analytics tracking
+# google_analytics: UA-000000-0
+
+# Replace this value and uncomment to enable Disqus
+# disqus: xxxxxx
+
+# Specify the author for blog posts
+author:
+  name: lsy2534
+  url: https://github.com/lsy2534/
