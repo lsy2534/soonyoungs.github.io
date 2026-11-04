@@ -1,0 +1,416 @@
+// Autumn theme overrides
+// 기존 테마 위에 얹는 가을 스타일. 이 파일과 styles.scss의 import 한 줄만 지우면 원래대로 돌아갑니다.
+
+::selection {
+  background: var(--maple);
+  color: #fff;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--heading-font);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: .2em;
+  transition: color .2s ease;
+}
+
+hr {
+  border-top: 1px dashed var(--gray-300);
+}
+
+blockquote {
+  color: var(--gray-600);
+  background: var(--mustard-soft);
+  border-left: 4px solid var(--mustard);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+img {
+  border-radius: var(--border-radius);
+}
+
+.message {
+  background: var(--mustard-soft);
+  color: var(--body-color);
+  border-left: 4px solid var(--mustard);
+}
+
+// ───── Sidebar ─────
+.sidebar-left {
+  position: relative;
+  background: var(--sidebar-bg) !important;
+  color: var(--sidebar-color) !important;
+  overflow: hidden;
+
+  // 은은한 낙엽 패턴
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='%23f6ead9' fill-opacity='0.06'%3E%3Cpath d='M40 30c8 4 14 12 14 22-6-2-10-1-14 3-4-4-8-5-14-3 0-10 6-18 14-22z' transform='rotate(-20 40 40)'/%3E%3Cpath d='M130 100c6 3 10 9 10 16-4-1-7 0-10 2-3-2-6-3-10-2 0-7 4-13 10-16z' transform='rotate(25 130 108)'/%3E%3Cpath d='M70 140c5 2 8 7 8 13-3-1-6 0-8 2-2-2-5-3-8-2 0-6 3-11 8-13z' transform='rotate(-40 70 146)'/%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 40%;
+    background: radial-gradient(ellipse at 50% 120%, rgba(201,149,47,.28), transparent 70%);
+    pointer-events: none;
+  }
+
+  > * { position: relative; z-index: 1; }
+}
+
+.avatar-image {
+  width: 34%;
+  max-width: 9rem;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid rgba(246, 234, 217, .85);
+  box-shadow: 0 8px 24px -6px rgba(0,0,0,.45);
+  margin-bottom: var(--spacer-2);
+}
+
+.masthead-title {
+  font-family: var(--heading-font);
+  font-weight: 700;
+  font-size: 1.9rem;
+  letter-spacing: -0.01em;
+
+  a:hover, a:focus { color: #f7d6a4; }
+}
+
+.masthead-tagline {
+  margin-top: .25rem;
+  font-size: 1rem;
+  opacity: .75;
+  letter-spacing: .04em;
+
+  &::before { content: "🍂 "; }
+}
+
+.navigation-list {
+  margin-top: var(--spacer-3);
+}
+
+.navigation-item a {
+  display: inline-block;
+  padding: .35rem 1.1rem;
+  border: 1px solid rgba(246, 234, 217, .35);
+  border-radius: 999px;
+  font-size: 90%;
+  letter-spacing: .08em;
+  text-decoration: none;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+
+  &:hover, &:focus {
+    color: var(--bark);
+    background: #f6ead9;
+    border-color: #f6ead9;
+  }
+}
+
+.social-icon {
+  opacity: .8;
+  transition: opacity .2s ease, transform .2s ease;
+
+  &:hover, &:focus {
+    color: #f7d6a4;
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+// ───── Home header (Dates / Categories / Tags) ─────
+.home-header-bar {
+  box-shadow: none;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: .5rem;
+}
+
+.home-header-menu {
+  .pure-menu-link {
+    color: var(--gray-600);
+    padding: .35em .9em;
+    margin-right: .25rem;
+    border: 0 !important;
+    border-radius: 999px;
+    font-size: .9rem;
+    transition: background .2s ease, color .2s ease;
+
+    &:hover, &:focus {
+      color: var(--maple) !important;
+      background: var(--maple-soft) !important;
+    }
+  }
+
+  .current-item {
+    color: var(--maple) !important;
+    background: var(--maple-soft) !important;
+    font-weight: 600;
+  }
+}
+
+// ───── Post list (cards) ─────
+.post-entry {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: calc(var(--border-radius) * 1.5);
+  padding: 1.5rem 1.75rem 1.1rem;
+  margin-bottom: var(--spacer-2);
+  box-shadow: var(--shadow);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 1.5rem; bottom: 1.5rem;
+    width: 3px;
+    border-radius: 0 3px 3px 0;
+    background: linear-gradient(var(--mustard), var(--maple));
+    opacity: 0;
+    transition: opacity .25s ease;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--gray-300);
+
+    &::before { opacity: 1; }
+  }
+
+  .post-title {
+    font-size: 1.4rem;
+    margin-bottom: .6rem;
+
+    a:hover, a:focus {
+      color: var(--maple);
+      text-decoration: none;
+    }
+  }
+
+  p {
+    color: var(--gray-600);
+    font-size: .95rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+.post-meta {
+  margin-top: 0;
+  font-size: .85rem;
+  color: var(--gray-500);
+  letter-spacing: .02em;
+
+  time {
+    display: inline-block;
+    padding: .1rem .65rem;
+    background: var(--mustard-soft);
+    color: var(--mustard);
+    border-radius: 999px;
+    font-weight: 600;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .post-meta time { color: #e4b75c; }
+}
+
+// ───── Post / page body ─────
+.post, .page {
+  max-width: 46rem;
+
+  > .post-title, > .page-title {
+    font-size: 2.1rem;
+    line-height: 1.35;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    margin-top: 2.75rem;
+    padding-bottom: .4rem;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -1px;
+      width: 3rem; height: 2px;
+      background: var(--maple);
+    }
+  }
+
+  h3 { color: var(--maple-dark); }
+
+  ul li::marker { color: var(--maple); }
+}
+
+@media (prefers-color-scheme: dark) {
+  .post h3, .page h3 { color: #f0b38a; }
+}
+
+// Inline code
+:not(pre) > code {
+  padding: .15em .4em;
+  color: var(--code-color);
+  background: var(--code-bg);
+  border-radius: .35em;
+}
+
+.highlight {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 1rem 1.25rem;
+}
+
+// 코드 블록 배경을 따뜻한 종이색으로 (라이트 모드)
+@media (prefers-color-scheme: light) {
+  div.highlight,
+  div.highlight .w,
+  div.highlight .err,
+  div.highlight .gi,
+  div.highlight .gd {
+    background-color: var(--code-bg);
+  }
+}
+
+// Tables
+table {
+  font-size: .95rem;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+thead th {
+  background: var(--gray-100);
+  border-bottom: 2px solid var(--maple) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  thead th { background: rgba(246,234,217,.05); }
+}
+
+tbody tr:hover { background: var(--maple-soft); }
+
+// Tags
+.post-tag {
+  padding: .2em .8em;
+  border: 1px solid var(--gray-300);
+  border-radius: 999px;
+  font-size: .85rem;
+  transition: all .2s ease;
+}
+
+.post-tags li a:hover .post-tag,
+.post-tags li a:focus .post-tag,
+.post-tags li a:hover,
+.post-tags li a:focus {
+  color: #fff;
+  background-color: var(--maple);
+  border-color: var(--maple);
+}
+
+// Related posts
+.related {
+  border: 1px solid var(--border-color);
+  border-radius: calc(var(--border-radius) * 1.5);
+  background: var(--card-bg);
+  padding: 1.25rem 1.5rem;
+
+  h2 { margin-top: 0; font-size: 1.2rem; }
+}
+
+.related-posts li {
+  padding: .4rem 0;
+  border-bottom: 1px dashed var(--border-color);
+
+  &:last-child { border-bottom: 0; }
+}
+
+// Pagination
+.pagination-item {
+  border-color: var(--border-color) !important;
+  background: var(--card-bg);
+  color: var(--gray-500);
+  font-weight: 600;
+  letter-spacing: .05em;
+}
+
+a.pagination-item {
+  color: var(--maple);
+
+  &:hover {
+    background: var(--maple) !important;
+    color: #fff;
+  }
+}
+
+// Archive (dates / categories / tags)
+.taxonomies .taxonomy {
+  border-bottom: 1px solid var(--gray-300);
+  transition: color .2s ease, border-color .2s ease;
+
+  &:hover {
+    color: var(--maple);
+    border-color: var(--maple);
+  }
+}
+
+.post-list-by-taxonomy time {
+  color: var(--mustard);
+}
+
+// TOC
+.toc-title {
+  font-family: var(--heading-font);
+  background: var(--bark);
+  color: #f6ead9;
+  border-color: var(--bark);
+}
+
+.toc-nav {
+  background: var(--card-bg);
+
+  a { color: var(--gray-600); }
+  a:hover { color: var(--maple); background: var(--maple-soft); }
+}
+
+// Footer
+.footer {
+  padding-top: var(--spacer-2);
+  border-top: 1px dashed var(--gray-300);
+  color: var(--gray-500);
+  text-align: center;
+
+  a { color: var(--gray-600); }
+  a:hover { color: var(--maple); }
+}
+
+// 모바일: 사이드바가 화면 전체를 차지하지 않도록
+@media (max-width: $md-width) {
+  .sidebar-left {
+    height: auto;
+    padding: var(--spacer-3) var(--spacer);
+  }
+  .navigation-list { margin-top: var(--spacer-2); }
+  .navigation-item { display: inline-block; margin: 0 .25rem; }
+}

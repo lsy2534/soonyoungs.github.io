@@ -1,50 +1,66 @@
+// Autumn palette — warm paper, maple, mustard, bark
 :root {
-  --gray-000: #f8f9fa;
-  --gray-100: #f1f3f5;
-  --gray-200: #e9ecef;
-  --gray-300: #dee2e6;
-  --gray-400: #ced4da;
-  --gray-500: #adb5bd;
-  --gray-600: #868e96;
-  --gray-700: #495057;
-  --gray-800: #343a40;
-  --gray-900: #212529;
+  --gray-000: #fbf8f3;
+  --gray-100: #f5efe6;
+  --gray-200: #ede4d6;
+  --gray-300: #e2d6c3;
+  --gray-400: #cbbba4;
+  --gray-500: #a8977f;
+  --gray-600: #857461;
+  --gray-700: #4f4237;
+  --gray-800: #2f261f;
+  --gray-900: #221b16;
 
-  --red: #fa5252;
-  --pink: #e64980;
-  --grape: #be4bdb;
-  --purple: #7950f2;
-  --indigo: #4c6ef5;
-  --blue: #228be6;
-  --cyan: #15aabf;
-  --teal: #12b886;
-  --green: #40c057;
-  --yellow: #fab005;
-  --orange: #fd7e14;
+  --maple: #b5532b;
+  --maple-dark: #8e3e1d;
+  --maple-soft: #f6e3d6;
+  --mustard: #c9952f;
+  --mustard-soft: #f7ecd2;
+  --olive: #6f7a48;
+  --bark: #3a2a20;
 
-  --blue-300: #74c0fc;
-  --blue-400: #4dabf7;
-  --yellow-100: #fff3bf;
+  --red: #b5532b;
+  --pink: #b8654f;
+  --grape: #9a4a3a;
+  --purple: #7a5a6a;
+  --indigo: #5a6476;
+  --blue: #b5532b;
+  --cyan: #5f8a83;
+  --teal: #6f7a48;
+  --green: #6f7a48;
+  --yellow: #c9952f;
+  --orange: #d0702f;
 
-  --body-font: "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --body-font-size: 18px;
-  --body-line-height: 1.5;
+  --blue-300: #e39a6b;
+  --blue-400: #eaa97d;
+  --yellow-100: var(--mustard-soft);
+
+  --body-font: "Pretendard", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --body-font-size: 17px;
+  --body-line-height: 1.75;
   --body-color: var(--gray-700);
-  --body-bg: #fff;
+  --body-bg: #faf6f0;
+  --card-bg: #fffdf9;
 
-  --text-font: Times, "Times New Roman", "Free Serif", "Noto Serif", TimesNewRomanPSMT, "Droid Serif";
+  --text-font: var(--body-font);
+  --heading-font: "Noto Serif KR", "Nanum Myeongjo", Georgia, serif;
 
-  --link-color: var(--blue);
-  --link-hover-color: #1c7ed6;
+  --link-color: var(--maple);
+  --link-hover-color: var(--maple-dark);
 
   --heading-color: var(--gray-900);
 
-  --border-color: var(--gray-300);
-  --border-radius: .25rem;
+  --border-color: var(--gray-200);
+  --border-radius: .6rem;
+  --shadow: 0 1px 2px rgba(58, 42, 32, .04), 0 6px 20px -8px rgba(58, 42, 32, .12);
+  --shadow-hover: 0 2px 4px rgba(58, 42, 32, .06), 0 14px 32px -12px rgba(142, 62, 29, .25);
 
-  --code-font: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --code-color: var(--grape);
-  --code-bg: #fbf1c7;
+  --code-font: "JetBrains Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --code-color: var(--maple-dark);
+  --code-bg: #f4ede2;
+
+  --sidebar-bg: linear-gradient(165deg, #3a2a20 0%, #5c3220 45%, #8e3e1d 80%, #b5532b 100%);
+  --sidebar-color: #f6ead9;
 
   --spacer: 1rem;
   --spacer-2: calc(var(--spacer) * 1.5);
@@ -53,17 +69,26 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --body-color: var(--gray-300);
-    --body-bg: var(--gray-800);
+    --body-color: #d9cdbd;
+    --body-bg: #1c1713;
+    --card-bg: #241d18;
 
-    --heading-color: #fff;
+    --heading-color: #f5ebdd;
 
-    --link-color: var(--blue-300);
-    --link-hover-color: var(--blue-400);
+    --link-color: #e39a6b;
+    --link-hover-color: #f0b38a;
 
-    --border-color: rgba(255,255,255,.15);
+    --maple-soft: rgba(227, 154, 107, .14);
+    --mustard-soft: rgba(201, 149, 47, .16);
 
-    --code-bg: #282828;
+    --border-color: rgba(246, 234, 217, .1);
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -10px rgba(0,0,0,.5);
+    --shadow-hover: 0 2px 4px rgba(0,0,0,.35), 0 16px 32px -12px rgba(0,0,0,.6);
+
+    --code-color: #f0b38a;
+    --code-bg: #2a221c;
+
+    --sidebar-bg: linear-gradient(165deg, #17110d 0%, #2b1a12 50%, #4a2414 100%);
   }
 }
 

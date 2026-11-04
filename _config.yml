@@ -5,7 +5,7 @@ url: https://lsy2534.github.io/soonyoungs.github.io/
 avatar: /avatar_soon.jpg
 paginate: 5
 permalink: pretty
-cover_image: /bg_soon.jpg
+# cover_image: /bg_soon.jpeg   # 가을 테마는 그라데이션 배경을 사용합니다. 사진을 쓰려면 주석 해제
 
 # Gems
 plugins:
