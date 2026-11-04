@@ -471,7 +471,8 @@ a.pagination-item {
   right: 0;
   top: calc(100% + .5rem);
   z-index: 20;
-  width: min(26rem, 90vw);
+  width: 26rem;
+  max-width: 90vw;
   max-height: 70vh;
   overflow-y: auto;
   padding: .9rem;
