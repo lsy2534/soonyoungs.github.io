@@ -106,3 +106,7 @@ body { background:var(--soon-bg); color:var(--soon-ink); font-family:"Pretendard
 .soon-card > :not(.soon-card-hit) { position:relative; z-index:2; pointer-events:none; }
 .soon-card .post-title a,.soon-card .soon-read { pointer-events:auto; }
 .soon-card-hit:focus-visible { outline:3px solid var(--soon-accent); outline-offset:3px; }
+
+/* Full card click affordance */
+.soon-card { cursor:pointer !important; }
+.soon-card:focus-visible { outline:3px solid var(--soon-accent); outline-offset:3px; }
