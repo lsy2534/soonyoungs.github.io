@@ -1,42 +1,13 @@
-<header class="masthead">
-  {% if site.avatar -%}
-    <div class="avatar">
-      {%- if site.avatar contains "://" -%}
-        {%- assign avatar = site.avatar -%}
-      {%- else -%}
-        {%- assign avatar = site.avatar | relative_url -%}
-      {%- endif -%}
-      <img src="{{ avatar }}" class="avatar-image" alt="{{ site.author.name }}">
-    </div>
-  {%- endif %}
-  <div class="masthead-title">
-    <a href="{{ "/" | relative_url }}" title="Home">{{ site.title }}</a>
+<aside class="soon-sidebar">
+  <a class="soon-brand" href="{{ '/' | relative_url }}"><span class="soon-brand-mark">S.</span><span>SOON BLOG<small>Developer's archive</small></span></a>
+  <div class="soon-profile">
+    {% if site.avatar %}<img src="{{ site.avatar | relative_url }}" alt="Soon profile">{% endif %}
+    <p>안녕하세요, Soon입니다.</p><small>기술을 배우고 기록합니다.</small>
   </div>
-  <div class="masthead-tagline">
-    <small>{{ site.description }}</small>
-  </div>
-  {%- if site.data.navigation -%}
-  <nav class="navigation">
-    <ul class="navigation-list">
-    {%- for nav in site.data.navigation -%}
-      <li class="navigation-item">
-        <a onclick="sessionStorage.setItem('forceCheckScroll', 'true')" href="{{ nav.url | relative_url }}">{{ nav.title | escape }}</a>
-      </li>
-    {%- endfor -%}
-    </ul>
+  <nav class="soon-nav" aria-label="주요 메뉴">
+    <a class="active" href="{{ '/' | relative_url }}"><span>⌂</span> Home</a>
+    <a href="{{ '/archive/' | relative_url }}"><span>▤</span> Archive</a>
+    <a href="https://github.com/lsy2534"><span>⌘</span> GitHub</a>
   </nav>
-  {%- endif -%}
-  {% if site.data.social -%}
-    <div class="social pure-menu pure-menu-horizontal">
-      <ul class="social-icons pure-menu-list">
-      {% for social in site.data.social -%}
-        <li class="pure-menu-item">
-          <a class="social-icon pure-menu-link" href="{{ social.url }}">
-            <i class="{{ social.icon | default: 'fas fa-link' }}" title="{{ social.title }}"></i>
-          </a>
-        </li>
-      {%- endfor %}
-      </ul>
-    </div>
-  {%- endif %}
-</header>
+  <div class="soon-sidebar-bottom"><span class="soon-status-dot"></span> Learning in public<br><small>Since 2023 · Seoul, KR</small></div>
+</aside>
