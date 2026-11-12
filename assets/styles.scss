@@ -1,22 +1,6 @@
 ---
-# Use a comment to ensure Jekyll reads the file to be transformed into CSS later
-# only main files contain this front matter, not partials.
+# Soon Blog v2 — UI overrides
 ---
-
-//
-//                        ___
-//                       /\_ \
-//  _____     ___     ___\//\ \      __
-// /\ '__`\  / __`\  / __`\\ \ \   /'__`\
-// \ \ \_\ \/\ \_\ \/\ \_\ \\_\ \_/\  __/
-//  \ \ ,__/\ \____/\ \____//\____\ \____\
-//   \ \ \/  \/___/  \/___/ \/____/\/____/
-//    \ \_\
-//     \/_/
-//
-// Designed, built, and released under MIT license by @mdo. Learn more at
-// https://github.com/poole/poole.
-
 @import "variables";
 @import "base";
 @import "type";
@@ -31,26 +15,87 @@
 @import "toc";
 @import "alignment";
 @import "autumn";
-@import "winter";  // 겨울 테마 (지우면 가을 테마)
-
+@import "winter";
 @import "syntax-light";
-@media (prefers-color-scheme: dark) {
-  @import "syntax-dark";
+@media (prefers-color-scheme: dark) { @import "syntax-dark"; }
+
+/* Soon Blog v2 */
+:root { --soon-ink:#18212f; --soon-muted:#778294; --soon-line:#e7ebf0; --soon-accent:#5b6cf8; --soon-bg:#f7f8fb; }
+html { scroll-behavior:smooth; }
+body { background:var(--soon-bg); color:var(--soon-ink); font-family:"Pretendard",sans-serif; }
+.container.pure-g { max-width:1440px; margin:0 auto; padding:0 28px; display:grid; grid-template-columns:230px minmax(0,1fr) 220px; gap:44px; }
+.sidebar-left.pure-u-1 { position:sticky; top:0; height:100vh; width:auto; background:transparent!important; color:var(--soon-ink)!important; padding:34px 0; box-sizing:border-box; }
+.sidebar-left .soon-sidebar { height:100%; display:flex; flex-direction:column; }
+.soon-brand { display:flex; align-items:center; gap:12px; color:var(--soon-ink); text-decoration:none; font-weight:800; letter-spacing:.08em; font-size:15px; }
+.soon-brand-mark { display:grid; place-items:center; width:42px; height:42px; background:#18212f; color:white; border-radius:13px; font-size:20px; letter-spacing:-.05em; }
+.soon-brand small { display:block; color:var(--soon-muted); font-size:10px; letter-spacing:.04em; font-weight:500; margin-top:3px; }
+.soon-profile { margin:48px 0 28px; padding:0 0 26px; border-bottom:1px solid var(--soon-line); }
+.soon-profile img { width:44px; height:44px; border-radius:50%; object-fit:cover; }
+.soon-profile p { font-size:14px; font-weight:700; margin:14px 0 4px; }
+.soon-profile small { font-size:12px; color:var(--soon-muted); }
+.soon-nav { display:grid; gap:7px; }
+.soon-nav a { color:#647084; padding:12px 14px; border-radius:12px; text-decoration:none; font-size:14px; font-weight:600; }
+.soon-nav a span { display:inline-block; width:24px; font-size:16px; }
+.soon-nav a:hover,.soon-nav a.active { background:#edf0ff; color:var(--soon-accent); }
+.soon-sidebar-bottom { margin-top:auto; color:#7d8797; font-size:12px; line-height:1.8; }
+.soon-sidebar-bottom small { margin-left:13px; }
+.soon-status-dot { display:inline-block; width:7px;height:7px;border-radius:50%;background:#39b980;margin-right:6px; }
+.content.pure-u-1 { width:auto; min-width:0; padding:44px 0 30px; }
+.sidebar-right.pure-u-1 { width:auto; padding-top:80px; }
+.soon-hero { padding:54px 0 42px; border-bottom:1px solid var(--soon-line); }
+.soon-eyebrow,.soon-section-label { font-size:11px; font-weight:800; letter-spacing:.16em; color:var(--soon-accent); }
+.soon-hero h1 { font-size:clamp(38px,5vw,64px); line-height:1.08; letter-spacing:-.055em; margin:24px 0 18px; font-weight:800; }
+.soon-hero h1 span { color:#8992a3; }
+.soon-intro { color:#667185; line-height:1.9; font-size:15px; }
+.soon-hero-meta { display:flex; gap:10px; margin-top:26px; flex-wrap:wrap; }
+.soon-hero-meta span { border:1px solid var(--soon-line); border-radius:100px; padding:7px 12px; color:#687386; font-size:10px; letter-spacing:.08em; font-weight:700; }
+.soon-toolbar { display:flex; align-items:end; justify-content:space-between; gap:20px; margin:34px 0 18px; }
+.soon-toolbar h2 { margin:8px 0 0; font-size:24px; letter-spacing:-.04em; }
+.soon-toolbar .search { margin:0; }
+.soon-toolbar input { border:1px solid var(--soon-line); border-radius:10px; background:white; padding:10px 13px; }
+.soon-posts { display:grid; gap:13px; }
+.soon-card { background:#fff; border:1px solid var(--soon-line); border-radius:16px; padding:23px 25px; margin:0; transition:transform .2s,border-color .2s,box-shadow .2s; }
+.soon-card:hover { transform:translateY(-2px); border-color:#cfd5ff; box-shadow:0 12px 28px rgba(31,42,75,.05); }
+.soon-card-top { display:flex; align-items:center; gap:12px; color:#8993a3; font-size:12px; }
+.soon-tag { background:#f0f2ff; color:#6572e9; border-radius:6px; padding:4px 8px; font-size:10px; font-weight:700; }
+.soon-card .post-title { font-size:21px; line-height:1.4; letter-spacing:-.035em; margin:13px 0 8px; }
+.soon-card .post-title a { color:var(--soon-ink); text-decoration:none; }
+.soon-card p { color:#7a8494; font-size:14px; line-height:1.8; margin:0; }
+.soon-read { display:inline-block; margin-top:15px; color:var(--soon-accent); text-decoration:none; font-size:12px; font-weight:700; }
+.post-title,.post h1 { letter-spacing:-.04em; }
+.post { background:#fff; border:1px solid var(--soon-line); border-radius:18px; padding:clamp(24px,4vw,52px); }
+.post h1.post-title { font-size:clamp(30px,4vw,44px); line-height:1.25; }
+.post-meta { color:#8a94a3; font-size:12px; }
+.post p,.post li { line-height:1.9; }
+.post pre { border-radius:12px; }
+.toc-wrapper { position:sticky; top:35px; border-left:1px solid var(--soon-line); padding-left:18px; }
+.toc-title { font-size:12px; color:#778294; letter-spacing:.08em; }
+.toc a { font-size:12px; color:#7b8596; text-decoration:none; line-height:1.7; }
+.footer { color:#9aa2af; border-top:1px solid var(--soon-line); margin-top:36px; padding-top:22px; }
+.pagination { margin:28px 0; }
+.pagination-item { border:1px solid var(--soon-line); border-radius:10px; padding:10px 14px; color:#687386; }
+@media (max-width:1100px) { .container.pure-g { grid-template-columns:190px minmax(0,1fr); gap:28px; } .sidebar-right.pure-u-1 { display:none; } }
+@media (max-width:700px) {
+ .container.pure-g { display:block; padding:0 18px; }
+ .sidebar-left.pure-u-1 { position:relative; height:auto; padding:18px 0 0; }
+ .soon-profile,.soon-nav,.soon-sidebar-bottom { display:none; }
+ .soon-brand-mark { width:36px;height:36px;border-radius:10px; }
+ .content.pure-u-1 { padding-top:10px; }
+ .soon-hero { padding:42px 0 30px; }
+ .soon-hero h1 { font-size:42px; }
+ .soon-toolbar { align-items:start; flex-direction:column; }
+ .soon-card { padding:20px; }
+ .soon-card .post-title { font-size:19px; }
+ .post { padding:22px 18px; }
 }
-
-// Sass for creating the swatches
-.colors {
-  display: grid;
-  grid-template-columns: max-content 1fr;
-
-  dt {
-    width: 3rem;
-    height: 3rem;
-    border-radius: var(--border-radius);
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.15);
-  }
-
-  dd {
-    margin-left: var(--spacer);
-  }
+@media (prefers-color-scheme:dark) {
+ :root { --soon-ink:#e7eaf2; --soon-muted:#9ba5b8; --soon-line:#2b3444; --soon-bg:#111722; --soon-accent:#9ba5ff; }
+ body { background:var(--soon-bg);color:var(--soon-ink); }
+ .soon-brand,.soon-card .post-title a { color:var(--soon-ink); }
+ .soon-brand-mark { background:#e7eaf2;color:#111722; }
+ .soon-nav a:hover,.soon-nav a.active,.soon-tag { background:#252b45;color:#aab2ff; }
+ .soon-card,.post,.soon-toolbar input { background:#171f2b; }
+ .soon-hero h1 span { color:#647084; }
+ .soon-intro,.soon-card p { color:#9ba5b8; }
+ .soon-hero-meta span { color:#9ba5b8; }
 }
