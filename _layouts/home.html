@@ -2,44 +2,33 @@
 layout: default
 ---
 
-{% include home-header.html %}
+<section class="soon-hero">
+  <p class="soon-eyebrow">DEVELOPER NOTES · KNOWLEDGE ARCHIVE</p>
+  <h1>Build, learn,<br><span>and keep the notes.</span></h1>
+  <p class="soon-intro">개발하며 배운 것과 해결한 문제를 기록합니다.<br>언젠가 다시 꺼내 쓸 수 있도록.</p>
+  <div class="soon-hero-meta"><span>JAVA · DATA · AI</span><span>기술 기록 아카이브</span></div>
+</section>
 
-<div class="posts">
+<div class="soon-toolbar">
+  <div><span class="soon-section-label">LATEST NOTES</span><h2>최근 기록</h2></div>
+  {% include search.html %}
+</div>
+
+<div class="posts soon-posts">
   {% for post in paginator.posts %}
-  <section class="post-entry">
-    <h2 class="post-title">
-      <a href="{{ post.url | relative_url }}">
-        {{ post.title }}
-      </a>
-    </h2>
-
-    <div class="post-meta">
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time>
-      {%- if jekyll.environment == "production" and site.disqus -%}
-        <span> • </span>
-        <a class="comment-count" href="{{ post.url | relative_url }}#disqus_thread">
-          <span class="disqus-comment-count" data-disqus-url="{{ post.url | absolute_url }}"></span>
-        </a>
-      {%- endif -%}
+  <article class="post-entry soon-card">
+    <div class="soon-card-top">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+      {% if post.tags %}<span class="soon-tag">{{ post.tags | first }}</span>{% endif %}
     </div>
-
-    <p>{{ post.excerpt | strip_html }}</p>
-  </section>
+    <h2 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+    <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
+    <a class="soon-read" href="{{ post.url | relative_url }}">읽어보기 <span aria-hidden="true">↗</span></a>
+  </article>
   {% endfor %}
-  {%- if jekyll.environment == "production" and site.disqus -%}
-    <script id="dsq-count-scr" src="//{{ site.disqus }}.disqus.com/count.js" async></script>
-  {%- endif -%}
 </div>
 
 <div class="pagination">
-  {% if paginator.next_page %}
-    <a class="pagination-item older" href="{{ paginator.next_page_path | relative_url }}">Older</a>
-  {% else %}
-    <span class="pagination-item older">Older</span>
-  {% endif %}
-  {% if paginator.previous_page %}
-    <a class="pagination-item newer" href="{{ paginator.previous_page_path | prepend: relative_url }}">Newer</a>
-  {% else %}
-    <span class="pagination-item newer">Newer</span>
-  {% endif %}
+  {% if paginator.next_page %}<a class="pagination-item older" href="{{ paginator.next_page_path | relative_url }}">← 이전 글</a>{% else %}<span class="pagination-item older">← 이전 글</span>{% endif %}
+  {% if paginator.previous_page %}<a class="pagination-item newer" href="{{ paginator.previous_page_path | relative_url }}">다음 글 →</a>{% else %}<span class="pagination-item newer">다음 글 →</span>{% endif %}
 </div>
