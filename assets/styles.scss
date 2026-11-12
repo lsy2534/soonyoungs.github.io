@@ -99,3 +99,10 @@ body { background:var(--soon-bg); color:var(--soon-ink); font-family:"Pretendard
  .soon-intro,.soon-card p { color:#9ba5b8; }
  .soon-hero-meta span { color:#9ba5b8; }
 }
+
+/* Entire post card is a clickable link */
+.soon-card { position:relative; }
+.soon-card-hit { position:absolute; inset:0; z-index:1; border-radius:inherit; }
+.soon-card > :not(.soon-card-hit) { position:relative; z-index:2; pointer-events:none; }
+.soon-card .post-title a,.soon-card .soon-read { pointer-events:auto; }
+.soon-card-hit:focus-visible { outline:3px solid var(--soon-accent); outline-offset:3px; }
