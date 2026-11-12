@@ -16,8 +16,7 @@ layout: default
 
 <div class="posts soon-posts">
   {% for post in paginator.posts %}
-  <article class="post-entry soon-card">
-    <a class="soon-card-hit" href="{{ post.url | relative_url }}" aria-label="{{ post.title | escape }}"></a>
+  <article class="post-entry soon-card" role="link" tabindex="0" style="cursor:pointer" onclick="window.location.href='{{ post.url | relative_url }}'" onkeydown="if(event.key==='Enter'){window.location.href='{{ post.url | relative_url }}'}">
     <div class="soon-card-top">
       <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
       {% if post.tags %}<span class="soon-tag">{{ post.tags | first }}</span>{% endif %}
